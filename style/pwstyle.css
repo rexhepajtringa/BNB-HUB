@@ -1,0 +1,693 @@
+@font-face {
+    font-family: primary;
+    src: url(../font/AirbnbCereal_W_Bd.otf);
+}
+
+@font-face {
+    font-family: secondary;
+    src: url(../font/AirbnbCereal_W_Lt.otf);
+}
+
+/*! colors */
+:root {
+    --primary_light_one: #e3e2df;
+    --primary_light_two: #eae7dc;
+    --primary_light_three: #dcd7c9;
+    --secondary: #a27b5c;
+    --secondary_hover: #7c5e44;
+    --secondary_ani: #9e7777;
+    --action_primary: #3f4e4f;
+    --action_secondary: #2c3639;
+}
+
+/* ! scrollbar animation start*/
+::-webkit-scrollbar {
+    width: .8em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary_light_three);
+    margin-block: 0.2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9e7777;
+    border-radius: 1vw;
+    transition: .2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary_hover);
+}
+
+/*! scrollbar animation end*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: primary;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: url("../images/pexels-dada-design-12277293\ 1.png") fixed;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    /* background-size: cover; */
+}
+
+
+/* !------------------------------//////
+!---------------------------------//////
+!-------------NAV BAR-------------//////
+!---------------------------------//////
+!---------------------------------//////
+!---------------------------------/// */
+nav {
+    position: sticky;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    color: var(--primary_light_two);
+    font-size: 1.3rem;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    width: 9rem;
+    height: 3rem;
+}
+
+.logo h4 {
+    position: relative;
+    top: .7rem;
+}
+
+.logo img {
+    position: relative;
+    height: 2rem;
+    width: auto;
+    top: .4rem;
+
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 45%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links .link {
+    position: relative;
+    top: .8rem;
+}
+
+.nav-links li a .account {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--secondary);
+    border-radius: 15px;
+    width: 9rem;
+    height: 3rem;
+}
+
+.nav-links li a .account img {
+    position: relative;
+    height: 2rem;
+    width: auto;
+    top: .4rem;
+    border-radius: 50%;
+}
+
+.nav-links li a .account h4 {
+    position: relative;
+    top: .6rem;
+    color: var(--primary_light_two);
+}
+
+.nav-links a {
+    color: var(--secondary);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: .5s;
+}
+
+.nav-links a:hover {
+    color: var(--secondary_hover);
+    font-weight: bold;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+/* when we pres what size will it contain in the page and the transition */
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--secondary_hover);
+    margin: 5px;
+    transition: all 00.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+
+    body {
+        overflow-x: hidden;
+        /* ? so we won't se the side-nav-bar */
+    }
+
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: var(--primary_light_two), 0.5;
+        backdrop-filter: blur(4px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 45%;
+        transform: translateX(100%);
+        /* ? to remove the side-nav-bar from the screen*/
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        opacity: 0;
+        /* ? we won't se the content of the nav */
+    }
+
+    .burger {
+        /* ? we will see only the three lines which will be click able to open the nav*/
+        display: block;
+        z-index: +1;
+    }
+
+    .nav-links li:hover .sub-menu-1 ul {
+        display: none;
+    }
+
+    /* we use the property in js so it will be  displayed in the page when clicked*/
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    /* link fade for the pages being displayed */
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    /* when we click the three lines will be transformed in button X */
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .toggle .line2 {
+        opacity: 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* !---------------------
+!-------------------------
+!--------------------------
+!       NAv Bar End 
+!--------------------------
+!--------------------------
+!---------------------------*/
+/* ----------- body part--------------------- */
+
+
+.listing-summary {
+    width: 100%;
+    margin-top: 3em;
+}
+
+
+/* ------------- glss container--------------- */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto;
+    background: linear-gradient(129.89deg, rgba(255, 255, 255, 0.4) 13.17%, rgba(255, 255, 255, 0.1) 87.87%);
+    backdrop-filter: blur(0.4px);
+    border-radius: 40px;
+    width: 80%;
+    height: auto;
+}
+
+
+/* booked title */
+.title {
+    display: flex;
+    width: 100%;
+    color: var(--secondary_hover);
+    margin: 2rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* booked title */
+
+/* ---------------glass container end---------------------- */
+
+/* -----------post container start-------------- */
+
+/* .left_part {
+    position: relative;
+
+} */
+
+.listing-summary .container .property-post {
+    margin-top: 3rem;
+    background-color: var(--primary_light_two);
+    width: 85%;
+    border-radius: 24px;
+    padding-bottom: 2rem;
+}
+
+.allproperty {
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 36rem;
+    height: 20rem;
+    top: .5rem;
+    left: .5em;
+    margin: auto;
+
+}
+
+
+
+.right_part {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 96%;
+    justify-content: space-between;
+}
+
+
+
+.right_tail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+
+.dates {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+/* -----------------------
+    Carousel start
+---------------------------- */
+
+.listing-summary .container .property-post .slideshow-container img {
+    width: 36rem;
+    height: 20rem;
+    margin: auto;
+    /* border-radius: 11px;
+    object-fit: cover; */
+
+}
+
+.slideshow-container .text,
+.slideshow-container .numbertext {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: var(--primary_light_one);
+    background-color: var(--secondary_hover);
+    opacity: 20%;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease-in;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    opacity: 65%;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.mySlides {
+    display: none;
+}
+
+.active-slide {
+    display: block;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+
+.dots {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1.5em;
+    padding-bottom: .5em;
+}
+
+.dot {
+    cursor: pointer;
+    height: 7px;
+    width: 7px;
+    margin: 0 2px;
+    background-color: var(--primary_light_three);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.dot:hover {
+    background-color: var(--secondary_ani);
+}
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .2
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .2
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* -----------------------
+    Carousel end
+---------------------------- */
+
+.listing-summary .container .property-post {
+    color: var(--secondary);
+}
+
+.listing-summary .container .property-post h2 {
+    position: relative;
+    margin-left: 1em;
+}
+
+.listing-summary .container .property-post p {
+    font-family: secondary;
+    position: relative;
+    margin-left: 1.5em;
+    padding-bottom: 1rem;
+}
+
+.listing-summary .container .property-post span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.right_tail div:last-child {
+    width: 50%;
+}
+
+.listing-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+.listing-buttons button {
+    padding-top: 1rem;
+    padding-top: .4rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.listing-summary .container .property-post span .reserve_button {
+    width: 8em;
+    height: 2.3em;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--action_primary);
+    color: var(--secondary);
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.listing-summary .container .property-post span .reserve_button:hover {
+    background-color: var(--action_secondary);
+}
+
+.remove_prop {
+    position: relative;
+    top: 4rem;
+    left: 25rem;
+}
+
+
+
+@media only screen and (max-width: 1710px) {
+    .allproperty {
+        flex-direction: column;
+        justify-content: space-between;
+        width: 80%;
+        height: auto;
+    }
+
+    .allproperty .left_part {
+        position: relative;
+        padding-right: 2rem;
+        border-radius: 20px;
+
+    }
+
+    .allproperty .left_part img {
+        border-radius: 20px;
+    }
+
+    .right_part {
+        margin-top: 3rem;
+        justify-content: center;
+    }
+
+    .listing-summary .container .property-post .slideshow-container {
+        position: relative;
+        right: 10%;
+        transform: translate(15%, 5%);
+        height: 20%;
+        width: auto;
+
+    }
+
+    .right_tail {
+        display: inline;
+        align-self: center;
+    }
+
+    .right_tail .dates {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        top: 10%;
+        right: 15%;
+        bottom: 10%;
+        transform: translate(35%, 30%);
+    }
+
+    .listing-buttons {
+        position: relative;
+        display: none;
+        flex-direction: row;
+        justify-content: space-between;
+        top: 10%;
+        right: 15%;
+        transform: translate(150%, 30%);
+
+    }
+
+    .remove_prop {
+        position: relative;
+        top: 30%;
+        left: 20%;
+    }
+
+
+
+
+
+}
+
+
+@media only screen and (max-width: 810px) {
+    .right_tail .dates {
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        top: 10%;
+        right: 15%;
+        bottom: 10%;
+        transform: translate(20%, 30%);
+    }
+
+    .listing-buttons {
+        position: relative;
+        display: none;
+        flex-direction: row;
+        justify-content: space-between;
+        top: 10%;
+        right: 15%;
+        transform: translate(80%, 30%);
+
+
+    }
+}
+
+/* edit profile link bottom  */
+
+.listing-summary {
+    padding-bottom: 3rem;
+}
+
+.editprofile {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.editprofile a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--secondary);
+    background-color: var(--action_primary);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 15px;
+    font-size: 25px;
+    transition: .5s;
+}
+
+.editprofile a:hover {
+    background-color: var(--action_secondary);
+}
+
+.add_wishlist img {
+    width: 3.5rem;
+    height: auto;
+}
+
+.add_wishlist {
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--action_primary);
+    color: var(--secondary);
+    transition: .5s;
+    cursor: pointer;
+}

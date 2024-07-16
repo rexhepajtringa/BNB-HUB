@@ -1,0 +1,166 @@
+.login-body{
+    background-color: #A27B5C;
+}
+div,
+span,
+form,
+body,
+#facebook-google a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.glass{
+    margin-top: 3em;
+    margin-bottom: 3em;
+    box-sizing: border-box;
+    height: 53.125em;
+    width: 84.5em;
+    background: linear-gradient(129.89deg, rgba(255, 255, 255, 0.4) 13.17%, rgba(255, 255, 255, 0.1) 87.87%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 40px;
+}
+
+
+
+.sub-container {
+    flex-direction: column;
+    width: 42.25%;
+    height: 100%;
+}
+
+#login {
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.log-in-input {
+    margin: 0px 0px 60px 10px;
+    border-radius: 8px;
+    background-color: #DCD7C9;
+    height: 1.910625em;
+    width: 70%;
+    border-radius: 15px;
+    border: none;
+    font-size: 30px;
+    font-weight: 30px;
+    
+}
+
+.log-in-btn {
+    background-color: #2C3639;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 250;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+#facebook-google {
+    width: 60%;
+    border-top: 2px solid rgba(0, 0, 0, 0.35);
+    padding-top: 30px;
+}
+
+#facebook-google img {
+    width: 4.375em;
+    height: 4.375em;
+}
+
+#border-line {
+    border-right: 2px solid rgba(0, 0, 0, 0.35);
+    padding: 10px 10% 10px 0px;
+}
+
+#login-link {
+    margin-top: 30px;
+    color: black;
+    font-size: 25px;
+}
+
+#interior {
+    width: 58.75%;
+    height: 100%;
+    border-radius: 40px 0px 0px 40px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.txt-in-logo {
+    display: none;
+}
+
+@media screen and (max-width:570px) {
+
+    body {
+        background: url("f69d0c5bbe98b73197240b9c5568bc96.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #interior {
+        display: none;
+    }
+
+    .glass{
+        height: 48em;
+        margin-bottom: 1em;
+        box-sizing: border-box;
+        background: linear-gradient(129.89deg, rgba(255, 255, 255, 0.4) 13.17%, rgba(255, 255, 255, 0.1) 87.87%);
+        box-shadow: 0px 4px 20px -1px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(1px);
+        border-radius: 40px;
+    }
+
+    .sub-container {
+        width: 100%;
+    }
+
+    .log-in-input {
+        margin: 0px 0px 40px 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid #000000;
+        border-radius: 10px;
+    }
+
+    .log-in-btn {
+        background: #2C3639;
+        border-radius: 20px;
+    }
+
+    #facebook-google {
+        flex-direction: column;
+    }
+
+    #facebook-google a {
+        width: 100%;
+        padding: 5px 1px 5px 0px;
+        border: 1px solid #000000;
+        border-radius: 10px;
+        text-decoration: none;
+        color: black;
+        height: 50px;
+    }
+
+    #border-line {
+        margin-bottom: 20px;
+        background-color: #1877F2;
+    }
+
+    #border-line p {
+        color: white;
+    }
+
+    #facebook-google img {
+        width: 3.375em;
+        height: 3.375em;
+    }
+
+    .txt-in-logo {
+        display: contents;
+    }
+}

@@ -1,0 +1,360 @@
+<?php
+
+// Start the session
+session_start();
+
+// Retrieve the current session user ID
+// $user_id = $_SESSION['user_id'] ;
+
+if(isset($_SESSION['user_id'])){
+    $session_set = true;
+    $clientName = $_SESSION['user_id']['first_name'];
+    $profilepic = "50cbd008cf18137b71f8a02938fc4a7.jpg";
+}
+else{
+    $session_set = false;
+}
+
+
+ ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>BNBHUB</title>
+    <style>
+
+@font-face {
+    font-family: primary;
+    src: url(font/AirbnbCereal_W_Bd.otf);
+}
+
+@font-face {
+    font-family: secondary;
+    src: url(font/AirbnbCereal_W_Lt.otf);
+}
+
+/*! colors */
+:root {
+    --primary_light_one: #e3e2df;
+    --primary_light_two: #eae7dc;
+    --primary_light_three: #dcd7c9;
+    --secondary: #a27b5c;
+    --secondary_hover: #7c5e44;
+    --secondary_ani: #9e7777;
+    --action_primary: #3f4e4f;
+    --action_secondary: #2c3639;
+}
+
+/* ! scrollbar animation start*/
+::-webkit-scrollbar {
+    width: .8em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary_light_three);
+    margin-block: 0.2em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9e7777;
+    border-radius: 1vw;
+    transition: .2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary_hover);
+}
+
+/*! scrollbar animation end*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: primary;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: url("images/pexels-dada-design-12277293 1.png") fixed;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    /* background-size: cover; */
+}
+        .big_container {
+            display: flex;
+            flex-direction: column;
+            
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .glass {
+            background: linear-gradient(129.89deg, rgba(255, 255, 255, 0.4) 13.17%, rgba(255, 255, 255, 0.1) 87.87%);
+            box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+            border-radius: 2.5rem;
+        }
+
+        .big_container {
+            width: 90%;
+            margin-top: 3em;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 35rem;
+        }
+        .addPropertyInfo{
+            display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+            width: 40%;
+            margin-top: 3%;
+            margin-left: -50px;
+            
+
+        }
+
+        .item{
+            padding: 0.3em;
+            display: flex;
+        }
+
+        .countryitem input{
+            
+            width: 8rem;
+            margin-right: 10px;
+        }
+
+        
+        input{
+            border-radius: 5px;
+            background: #DCD7C9;
+            border: 2px solid #3F4E4F;
+            height: 2rem;
+            
+            font-size: larger;
+            
+        }
+
+        #summary{
+            height: 7rem;
+        }
+
+        #pets{
+            background-color: #DCD7C9;
+            width: 15rem;
+            border-radius: 10px;
+            border-color: #3F4E4F;
+            color: #3F4E4F;
+        }
+
+       
+
+        #drop_file_zone {
+    background-color: #DCD7C9;
+    width: 400px;
+    height: 250px;
+    padding: 8px;
+    padding-top: 7em;
+    font-size: 18px;
+    border-radius: 15px;
+}
+#drag_upload_file {
+  width:50%;
+  margin:0 auto;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+  display: none;
+}
+
+.item2{
+
+    display:flex;
+    flex-direction: column;
+    color:#3F4E4F;
+    background-color: #DCD7C9;
+    width: 15.5rem;
+    border-radius: 10px;
+    border: #3F4E4F 3px;
+    margin-top: 15px;
+    justify-content: center;
+            
+
+}
+
+
+.remove_user_container {
+            width: 321.35px;
+            height: 343px;
+            background: #EAE7DC;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .remove_user_container h3 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 31px;
+            text-align: center;
+            color: #646FD4;
+        }
+
+        .remove_user_container img {
+            width: 199px;
+            height: 199px;
+            border-radius: 50%;
+        }
+
+        .remove_user_container button {
+            width: 161.11px;
+            height: 46.77px;
+            background: #2C3639;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            color: #E3E2DF;
+        }
+
+        .submitbutton input{
+            margin-left: 45%;
+            margin-right: auto;
+            width: 161.11px;
+            height: 46.77px;
+            background: #2C3639;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            color: #E3E2DF;
+        }
+
+        
+
+    </style>
+</head>
+<body background="images/pexels-dada-design-12277293 1.png">
+<nav>
+        <div class="logo">
+            <img src="images/LOGO_USER.png">
+            <h4>BNBHUB</h4>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link">
+                <a href="index.php">Home</a>
+            </li>
+            <li class="link">
+                <a href="listing.php">Listing</a>
+            </li>
+            <li class="link">
+                <a href="wishlist.html">Wishlist</a>
+            </li>
+            <li class="link">
+            <a href="addPropertyUser.php">Become a Host</a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="account" id="boom">
+                        <h4 id="loggedin">Hi, Ana</h4>
+                        <img src="images/person.jpg">
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <!-- ? The Nav Bar-->
+        <!-- ? Burger only on mobile mode-->
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <div class="big_container glass">
+        <div class="addPropertyInfo">
+            <form action="" method="post">
+        <div class="item">
+        <div class="countryitem">
+            <input type="text" id="firstname" name="firstname" placeholder="First Name">
+        </div>
+        <div class="countryitem">
+            <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+        </div>
+          
+        </div>
+       
+         <div class="item">
+            <input type="text" id="email" name="email" placeholder="email" style="width: 18rem;">
+          
+         </div>
+ 
+        <div class="item">
+            <input type="number" id="mobile" name="mobile" placeholder="mobile" style="width: 18rem;">
+        </div>
+            <fieldset id="pets" style="margin-top: 15px;">
+                <legend>Gender</legend>
+            
+                <div class="item">
+                  <input type="radio" id="male" name="gender" value="male">
+                  <label for="male">Male</label>
+                </div>
+            
+                <div class="item">
+                  <input type="radio" id="female" name="gender" value="female">
+                  <label for="female">Female</label>
+                </div>
+
+                <div class="item">
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                  </div>
+                  
+            </fieldset>
+        
+    </div>
+
+   
+    <div class="remove_user_container">
+        <img src="image_6487327 (2).JPG">
+        <button type="submit" class="btn-delete" style="margin-top: 10px;">Edit Image</button>
+    </div>
+
+
+    <div class="submitbutton" style="width: 100%;">
+        <input type="submit" id="submit" value="Confirm" >
+    </div>
+    </div>
+
+    
+
+   
+<php? ($_SESSION['logged']);?>
+</body>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: url("pexels-dada-design-12277293 1.png") fixed;
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        :root {
+            --primary_light_one: #e3e2df;
+            --primary_light_two: #eae7dc;
+            --primary_light_three: #dcd7c9;
+            --secondary: #a27b5c;
+            --secondary_hover: #7c5e44;
+            --secondary_ani: #9e7777;
+            --action_primary: #3f4e4f;
+            --action_secondary: #2c3639;
+        }
+
+        /* ! scrollbar animation start*/
+        ::-webkit-scrollbar {
+            width: .8em;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--primary_light_three);
+            margin-block: 0.2em;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #9e7777;
+            border-radius: 1vw;
+            transition: .2s;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary_hover);
+        }
+
+        /*! scrollbar animation end*/
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: primary;
+            scroll-behavior: smooth;
+        }
+
+
+
+
+        /* !------------------------------//////
+!---------------------------------//////
+!-------------NAV BAR-------------//////
+!---------------------------------//////
+!---------------------------------//////
+!---------------------------------/// */
+        nav {
+            position: sticky;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            min-height: 8vh;
+            color: var(--primary_light_two);
+            font-size: 1.3rem;
+            z-index:+100;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: var(--secondary);
+            border-radius: 15px;
+            width: 9rem;
+            height: 3rem;
+        }
+
+        .logo h4 {
+            position: relative;
+            top: .7rem;
+        }
+
+        .logo img {
+            position: relative;
+            height: 2rem;
+            width: auto;
+            top: .4rem;
+
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            width: 45%;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links .link {
+            position: relative;
+            top: .8rem;
+        }
+
+        .nav-links li a .account {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: var(--secondary);
+            border-radius: 15px;
+            width: 9rem;
+            height: 3rem;
+        }
+
+        .nav-links li a .account img {
+            position: relative;
+            height: 2rem;
+            width: auto;
+            top: .4rem;
+            border-radius: 50%;
+        }
+
+        .nav-links li a .account h4 {
+            position: relative;
+            top: .6rem;
+            color: var(--primary_light_two);
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: .5s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary_hover);
+            font-weight: bold;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* when we pres what size will it contain in the page and the transition */
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary_hover);
+            margin: 5px;
+            transition: all 00.3s ease;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .nav-links {
+                width: 60%;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+
+
+            body {
+                overflow-x: hidden;
+                /* ? so we won't se the side-nav-bar */
+            }
+
+            .nav-links {
+                position: absolute;
+                right: 0px;
+                height: 92vh;
+                top: 8vh;
+                background-color: var(--primary_light_two), 0.5;
+                backdrop-filter: blur(4px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 45%;
+                transform: translateX(100%);
+                /* ? to remove the side-nav-bar from the screen*/
+                transition: transform 0.5s ease-in;
+            }
+
+            .nav-links li {
+                opacity: 0;
+                /* ? we won't se the content of the nav */
+            }
+
+            .burger {
+                /* ? we will see only the three lines which will be click able to open the nav*/
+                display: block;
+                z-index: +1;
+            }
+
+            .nav-links li:hover .sub-menu-1 ul {
+                display: none;
+            }
+
+            /* we use the property in js so it will be  displayed in the page when clicked*/
+            .nav-active {
+                transform: translateX(0%);
+            }
+
+            /* link fade for the pages being displayed */
+            @keyframes navLinkFade {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+
+            /* when we click the three lines will be transformed in button X */
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .toggle .line2 {
+                opacity: 0;
+            }
+
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+
+        .listing-summary {
+            width: 100%;
+            margin-top: 3em;
+        }
+
+        .big__container,
+        .listing-summary {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .glass {
+            background: linear-gradient(129.89deg, rgba(255, 255, 255, 0.4) 13.17%, rgba(255, 255, 255, 0.1) 87.87%);
+            box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(1px);
+            border-radius: 40px;
+        }
+
+        .big__container {
+            width: 90%;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .remove_property_container {
+            width: 321.35px;
+            height: 343px;
+            background: #EAE7DC;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .remove_property_container h3 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 26px;
+            line-height: 31px;
+            text-align: center;
+            color: #646FD4;
+        }
+
+        .remove_property_container img {
+            width: 275px;
+            height: 225px;
+            object-fit: cover;
+            border-radius: 5%;
+        }
+
+
+        .remove_property_container button {
+            width: 161.11px;
+            height: 46.77px;
+            background: #646FD4;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 29px;
+            text-align: center;
+            color: #E3E2DF;
+        }
+    </style>
+</head>
+
+<body">
+
+    <nav>
+        <div class="logo">
+            <img src="images/LOGO_USER.png">
+            <h4>BNBHUB</h4>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link">
+                <a href="admin.html">Home</a>
+            </li>
+            <li class="link">
+                <a href="">Add Property</a>
+            </li>
+            <li class="link">
+                <a href="remove_property.html">Remove Property</a>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="account">
+                        <h4>Hi, Ana</h4>
+                        <img src="images/person.jpg">
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <!-- ? The Nav Bar-->
+        <!-- ? Burger only on mobile mode-->
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <div class="listing-summary">
+        <div class="big__container glass">
+            <div class="remove_property_container">
+                <div class="img_div">
+                    <img src="house_image1.png">
+                </div>
+                <h3>Noent Berisha</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <div class="img_div">
+                    <img src="house_image2.png">
+                </div>
+                
+                <h3>Gent Osmani</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <div class="img_div">
+                    <img src="house_image3.png">
+                </div>
+                <h3>Etnik Ballata</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image4.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image5.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image6.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+
+            <div class="remove_property_container">
+                <img src="house_image1.png">
+                <h3>Username</h3>
+                <button>Remove</button>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navSlide = () => {
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+        
+        burger.addEventListener('click', () => {
+            // ! Toggle nav
+            nav.classList.toggle('nav-active');
+    
+            // ? Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = ''
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;//? the delay of the nav li to show up
+                } 
+            });
+            
+            //?Burger Animation the three lines
+            burger.classList.toggle('toggle');
+        });
+        
+    }
+    
+    navSlide();
+    
+        let slideIndex = 1;
+        showSlides(slideIndex);
+    
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+    
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+    
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+    
+          if (n > slides.length) { slideIndex = 1 }
+          if (n < 1) { slideIndex = slides.length }
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+    
+          slides[slideIndex - 1].style.display = "block";
+    
+        }
+    
+    
+      </script>
+
+    </body>
+
+</html>
